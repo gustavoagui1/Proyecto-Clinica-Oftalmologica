@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Clientes',
     'Oftalmologos',
     'Recetas',
+    'Cita',
 ]
 
 MIDDLEWARE = [
