@@ -1,18 +1,142 @@
-{% extends "base/base.html" %}
+<!DOCTYPE html>
 
-{% block titulo %} 
-    INDEX
-{% endblock %}
+{% load static %}
+<html lang="en">
 
-{% block contenido %} 
-    {% if user.is_authenticated %}
-    <h1>Bienvenido {{ user.username }}</h1>
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Log out</button>
-    </form>
-    {% else %}
-        <h1> Bienvenido, no estás autentcado</h1>
-        <a href="{% url 'login' %}" class="btn btn-primary">Log in</a>
-    {% endif %}
-{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Centro Oftalmológico{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="{% static 'assets/bootstrap.min.css' %}" media="screen" />
+    <link rel="stylesheet" href="{% static 'assets/custom.min.css' %}" media="screen" />
+    <link rel="stylesheet" href="{% static 'assets/extra.css' %}" media="screen" />
+
+    <!-- CSS custom para ajustar el tamaño de las imágenes y centrar el texto -->
+    <style>
+        .team-img {
+            width: 150px;  /* Ajusta el tamaño que desees */
+            height: 150px;
+            object-fit: cover;  /* Mantiene la proporción sin deformar la imagen */
+        }
+        .center-text {
+            text-align: center;
+        }
+        .hero h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" style="background-color: #007bff; color: white;">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand" style="color: white;">Centro Oftalmológico</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" style="color: white;">Consultas</a></li>
+                    <li><a href="#" style="color: white;">Agendas</a></li>
+                    <li><a href="#" style="color: white;">Médicos</a></li>
+                    <li><a href="#" style="color: white;">Especialidades</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                    <li><a href="#" style="color: white;">Mi Cuenta</a></li>
+                    <li>
+                        <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link" style="color: white; text-decoration: none;">Cerrar sesión</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}" style="color: white;">Iniciar sesión</a></li>
+                    <li><a href="#" style="color: white;">Registrarse</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bienvenida -->
+    <div class="container margin-top" style="margin-top: 80px;">
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Centro Oftalmológico que se preocupa por tu salud visual 👁️</h1>
+                        <p>
+                            Contamos con más de 10 años brindando atención de calidad a personas como tú, que buscan el mejor cuidado para su visión.
+                            Disponemos de los mejores oftalmólogos de la ciudad, en constante actualización y siempre listos para ofrecerte un servicio de excelencia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Nuestro Equipo -->
+        <section class="container py-5" style="margin-top: 50px;" id="team">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="display-4">Nuestro equipo</h1>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="container">
+                <div class="row text-center">
+                    <!-- Team item -->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4">
+                            <img src="{% static 'img/254986.jpg' %}" alt="" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm team-img">
+                            <h5 class="mb-0">Dr Sai</h5>
+                            <span class="small text-uppercase text-muted">Especialista en córnea y cirugía refractiva. Más de 15 años de experiencia.</span>
+                        </div>
+                    </div><!-- End -->
+
+                    <!-- Team item -->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4">
+                            <img src="{% static 'img/doctor.jpg' %}" alt="" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm team-img">
+                            <h5 class="mb-0">Dr. Juan Pérez</h5>
+                            <span class="small text-uppercase text-muted">Oftalmóloga pediátrica con enfoque en detección temprana de problemas visuales.</span>
+                        </div>
+                    </div><!-- End -->
+
+                    <!-- Team item -->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4">
+                            <img src="{% static 'img/doctorr.jpg' %}" alt="" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm team-img">
+                            <h5 class="mb-0">Dr. Marío López</h5>
+                            <span class="small text-uppercase text-muted">Especialista en retina y vítreo. Líder en tratamientos avanzados.</span>
+                        </div>
+                    </div><!-- End -->
+
+                    <!-- Team item -->
+                    <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="bg-white rounded shadow-sm py-5 px-4">
+                            <img src="{% static 'img/prueba.jpg' %}" alt="" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm team-img">
+                            <h5 class="mb-0">Dr. John</h5>
+                            <span class="small text-uppercase text-muted">Cirugía Oftalmológica Avanzada y Tratamiento de Cataratas Complejas.</span>
+                        </div>
+                    </div><!-- End -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://kit.fontawesome.com/c2a3297ec9.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

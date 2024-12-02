@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title>Registro</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f7f7f7; /* Fondo gris claro */
         }
-        .login-container {
+        .register-container {
             width: 50%; /* Ancho del cuadro */
             max-width: 600px; /* Limitar ancho máximo */
             padding: 3rem;
@@ -34,7 +34,7 @@
             box-shadow: none; /* Sin iluminación adicional */
             background-color: #fff; /* Fondo blanco */
         }
-        .login-container h1 {
+        .register-container h1 {
             font-size: 2.5rem; /* Título grande */
             margin-bottom: 2rem;
             text-align: center;
@@ -64,7 +64,7 @@
             text-decoration: underline;
         }
         @media (max-width: 768px) {
-            .login-container {
+            .register-container {
                 padding: 1.5rem;
                 width: 90%; /* Ajuste para pantallas pequeñas */
             }
@@ -76,22 +76,30 @@
 </head>
 <body class="d-flex align-items-center justify-content-center" style="height: 100vh;">
 
-    <div class="login-container">
-        <h1>Iniciar Sesión</h1>
+    <div class="register-container">
+        <h1>Registro</h1>
         <form method="post">
             {% csrf_token %}
             <div class="mb-4">
-                <label for="username" class="form-label">Nombre de Usuario</label>
-                <input type="text" id="username" name="username" class="form-control" placeholder="Ingresa tu nombre de usuario" required>
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Ingresa tu usuario" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Ingresa tu correo" required>
             </div>
             <div class="mb-4">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Ingresa tu contraseña" required>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Crea una contraseña" required>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+            <div class="mb-4">
+                <label for="confirm-password" class="form-label">Confirmar Contraseña</label>
+                <input type="password" id="confirm-password" name="confirm_password" class="form-control" placeholder="Confirma tu contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Registrarse</button>
         </form>
         <p class="text-center text-muted mt-3">
-            <a href="#" class="text-dark">¿Olvidaste tu contraseña?</a>
+            ¿Ya tienes una cuenta? <a href="#" class="text-primary">Inicia sesión aquí</a>
         </p>
     </div>
 
