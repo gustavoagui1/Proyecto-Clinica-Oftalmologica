@@ -7,4 +7,4 @@ class Paciente(models.Model):
     rut_paciente = models.CharField(max_length=9)
 
     def __str__(self):
-        return f"{self.nombre_paciente} {self.apellido_paciente}"
+        return f"Nombre Paciente: {self.nombre_paciente} {self.apellido_paciente}"

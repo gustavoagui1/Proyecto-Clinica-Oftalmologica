@@ -7,5 +7,5 @@ class Oftalmologo(models.Model):
     rut_doctor = models.CharField(max_length=9)
 
     def __str__(self):
-        return f"{self.nombre_doctor} {self.apellido_doctor}"
+        return f"Nombre Doctor: {self.nombre_doctor} {self.apellido_doctor}"
     

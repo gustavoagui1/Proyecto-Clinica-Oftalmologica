@@ -11,4 +11,6 @@ class Cita(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Fecha de cita: {self.fecha_cita}\nHora Cita{self.hora_cita}.\nPaciente {self.paciente}\nOftalmologo{self.oftalmologo} "
+        return f"Fecha cita: {self.fecha_cita} - Hora Cita: {self.hora_cita} - 
+        Paciente: {self.paciente.nombre_paciente} {self.paciente.apellido_paciente} - 
+        Oftalmologo: {self.oftalmologo.nombre_doctor} {self.oftalmologo.apellido_doctor}"

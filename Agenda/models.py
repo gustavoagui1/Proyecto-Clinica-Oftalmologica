@@ -8,4 +8,6 @@ class Agenda(models.Model):
     oftalmologo = models.ForeignKey(Oftalmologo, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Fecha: {self.fecha} - Hora: {self.hora} - Oftalmologo: {self.oftalmologo}'
+        return f'Fecha: {self.fecha} - 
+        Hora: {self.hora} - 
+        Oftalmologo: {self.oftalmologo.nombre_doctor} {self.oftalmologo.apellido_doctor}'

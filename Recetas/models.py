@@ -7,4 +7,4 @@ class Receta(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Receta de {self.paciente}"
+        return f"Receta pertenece a: {self.paciente.nombre_paciente} {self.paciente.apellido_paciente}"
