@@ -23,6 +23,20 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include("django.contrib.auth.urls")),
     path('', TemplateView.as_view(template_name="index.html"), name="home"),
-    path('Recetas/',recetasData),
     path('registro/', TemplateView.as_view(template_name="registration/registro.html"), name="registro"),
 ]
+
+'''
+EJEMPLOS DE URLS DEL OTRO PROYECTO
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('reservas/', views.lista_reservas, name='lista_reservas'),
+    path('reservas/agregar/', views.agregar_reserva, name='agregar_reserva'),
+    path('reservas/editar/<int:id>/', views.editar_reserva, name='editar_reserva'),
+    path('reservas/eliminar/<int:id>/', views.eliminar_reserva, name='eliminar_reserva'),
+]
+'''
